@@ -6,9 +6,11 @@
 
 I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section.
 
-For data processing, I removed 90 of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data
-![Image of data before](./examples/1.png)
-![Image of date after](./examples/2.png)
+### data processing
+
+For data processing, I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data
+![Image of data before](./examples/1.png) distribution of data before processing
+![Image of date after](./examples/2.png) distribution of date after processing
 
 ## Details About Files In This Directory
 
@@ -16,35 +18,35 @@ For data processing, I removed 90 of 0 angle so model will not overtrain on 0 an
 
 This file has 2 part.
 
-1) preprocess data, line 9-103
-    - data of center lane, prevent off road : remove 90% of 0 angle, so it take short time to train and model will not be train on a lot of 0 angle.
-    - recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
+1. preprocess data, line 9-103
+* data of center lane, prevent off road : remove 90% of 0 angle, so it take short time to train and model will not be train on a lot of 0 angle.
+* recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
 
-2) model line 114-182 : This model initialize by VGG net 11, but I decrease filter size down to 8-64. 
+2. model line 114-182 : This model initialize by VGG net 11, but I decrease filter size down to 8-64. 
 
 Here is architecture of the model:
 
-Normalize (divide 255 and minus 5)
-Crop, input shape (160, 320, 3), output shape (60, 320, 3)
-Convolution layer 1, input shape (64, 320, 3), filtter shape (3, 3, 8), output shape (64, 320, 8)
-MaxPooling, input shape (64, 320, 8), output shape (32, 160, 8)
-Convolution layer 2, input shape (32, 160, 8), filtter shape (3, 3, 16), output shape (32, 160, 16)
-MaxPooling, input shape (32, 160, 16), output shape (16, 80, 16)
-Convolution layer 3, input shape (16, 80, 16), filtter shape (3, 3, 32), output shape (16, 80, 32)
-Convolution layer 4, input shape (16, 80, 32), filtter shape (3, 3, 32), output shape (16, 80, 32)
-MaxPooling, input shape (16, 80, 32), output shape (8, 40, 32)
-Convolution layer 5, input shape (8, 40, 32), filtter shape (3, 3, 64), output shape (8, 40, 64)
-Convolution layer 6, input shape (8, 40, 64), filtter shape (3, 3, 64), output shape (8, 40, 64)
-MaxPooling, input shape (8, 40, 64), output shape (4, 20, 64)
-Convolution layer 7, input shape (4, 20, 64), filtter shape (3, 3, 64), output shape (4, 20, 64)
-Convolution layer 8, input shape (4, 20, 64), filtter shape (3, 3, 64), output shape (4, 20, 64)
-MaxPooling, input shape (4, 20, 64), output shape (2, 10, 64)
-Flatten, input shape (2, 10, 64), output shape (1280)
-Fully connected layer 9, input shape (1280), output shape (1280)
-Dropout rate 50%
-Fully connected layer 10, input shape (1280), output shape (1280)
-Dropout rate 50%
-Fully connected layer 11, input shape (1000), output shape (1)
+* Normalize (divide 255 and minus 5)
+* Crop, input shape (160, 320, 3), output shape (60, 320, 3)
+* Convolution layer 1, input shape (64, 320, 3), filtter shape (3, 3, 8), output shape (64, 320, 8)
+* MaxPooling, input shape (64, 320, 8), output shape (32, 160, 8)
+* Convolution layer 2, input shape (32, 160, 8), filtter shape (3, 3, 16), output shape (32, 160, 16)
+* MaxPooling, input shape (32, 160, 16), output shape (16, 80, 16)
+* Convolution layer 3, input shape (16, 80, 16), filtter shape (3, 3, 32), output shape (16, 80, 32)
+* Convolution layer 4, input shape (16, 80, 32), filtter shape (3, 3, 32), output shape (16, 80, 32)
+* MaxPooling, input shape (16, 80, 32), output shape (8, 40, 32)
+* Convolution layer 5, input shape (8, 40, 32), filtter shape (3, 3, 64), output shape (8, 40, 64)
+* Convolution layer 6, input shape (8, 40, 64), filtter shape (3, 3, 64), output shape (8, 40, 64)
+* MaxPooling, input shape (8, 40, 64), output shape (4, 20, 64)
+* Convolution layer 7, input shape (4, 20, 64), filtter shape (3, 3, 64), output shape (4, 20, 64)
+* Convolution layer 8, input shape (4, 20, 64), filtter shape (3, 3, 64), output shape (4, 20, 64)
+* MaxPooling, input shape (4, 20, 64), output shape (2, 10, 64)
+* Flatten, input shape (2, 10, 64), output shape (1280)
+* Fully connected layer 9, input shape (1280), output shape (1280)
+* Dropout rate 50%
+* Fully connected layer 10, input shape (1280), output shape (1280)
+* Dropout rate 50%
+* Fully connected layer 11, input shape (1000), output shape (1)
 
 ### `drive.py`
 
