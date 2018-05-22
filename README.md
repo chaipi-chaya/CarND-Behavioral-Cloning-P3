@@ -20,7 +20,7 @@ This file has 2 part.
 * data of center lane, prevent off road : remove 90% of 0 angle, so it take short time to train and model will not be train on a lot of 0 angle.
 * recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
 
-2. model line 114-182 : This model initialize by VGG net 11, but I decrease filter size down to 8-64. 
+2. model line 114-182 : This model initialize by VGG net 11, but I decrease filter size down to 8-64. All activation function is relu.
 
 Here is architecture of the model:
 
