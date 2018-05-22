@@ -4,13 +4,13 @@
 
 ### model
 
-I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section. I trained model from data of center lane and recovering data but I got problem when the car hit on off road trail, so I added more data of preventing off road trail.
+I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section. I trained model from data of center lane and recovering data.
 ![prevent off road trail image](/examples/off_road.jpg?raw=true "prevent off road trail image")
 ![recovering image](/examples/recovering.jpg?raw=true "recovering image")
 
 ### data generation
 
-I collected data from center lane, recovering from side road and prevent goning on off road.
+I collected data from center lane and recovering from side road.
 
 ### data processing
 
@@ -25,7 +25,7 @@ For data processing, I removed 90% of 0 angle so model will not overtrain on 0 a
 This file has 2 part.
 
 1. preprocess data, line 9-103
-* data of center lane, prevent off road : remove 90% of 0 angle, so it take short time to train and model will not be train on a lot of 0 angle.
+* data of center lane: remove 90% of 0 angle, so it take short time to train and model will not be train on a lot of 0 angle.
 * recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
 
 2. model line 114-182 : This model initialize by VGG net 11, but I decrease filter size down to 8-64. All activation function is relu.
@@ -112,16 +112,3 @@ python video.py run1 --fps 48
 ```
 
 Will run the video at 48 FPS. The default FPS is 60.
-
-#### Why create a video
-
-1. It's been noted the simulator might perform differently based on the hardware. So if your model drives succesfully on your machine it might not on another machine (your reviewer). Saving a video is a solid backup in case this happens.
-2. You could slightly alter the code in `drive.py` and/or `video.py` to create a video of what your model sees after the image is processed (may be helpful for debugging).
-
-### Tips
-- Please keep in mind that training images are loaded in BGR colorspace using cv2 while drive.py load images in RGB to predict the steering angles.
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
-
-# CarND-Behavioral-Cloning-P3
