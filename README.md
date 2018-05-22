@@ -42,9 +42,9 @@ Here is architecture of the model:
 * Flatten, input shape (2, 10, 64), output shape (1280)
 * Fully connected layer 9, input shape (1280), output shape (1280)
 * Dropout rate 50%
-* Fully connected layer 10, input shape (1280), output shape (1280)
+* Fully connected layer 10, input shape (1280), output shape (640)
 * Dropout rate 50%
-* Fully connected layer 11, input shape (1000), output shape (1)
+* Fully connected layer 11, input shape (640), output shape (1)
 
 ### `drive.py`
 

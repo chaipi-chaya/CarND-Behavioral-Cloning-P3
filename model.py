@@ -166,13 +166,13 @@ model.add(Dense(1280))
 # Dropout rate 50%
 model.add(Dropout(0.5))
 
-# Fully connected layer 10, input shape (1280), output shape (1280)
+# Fully connected layer 10, input shape (1280), output shape (640)
 model.add(Dense(640))
 
 # Dropout rate 50%
 model.add(Dropout(0.5))
 
-# Fully connected layer 11, input shape (1000), output shape (1)
+# Fully connected layer 11, input shape (640), output shape (1)
 model.add(Dense(1))
 
 # Compute loss by mean squared error, Optimize by adam
