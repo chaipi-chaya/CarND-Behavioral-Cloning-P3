@@ -9,8 +9,8 @@ I used VGG net 11 layers, but it too large for this problem, so I reduced filter
 ### data processing
 
 For data processing, I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data
-![Image of data before](./examples/1.png) distribution of data before processing
-![Image of date after](./examples/2.png) distribution of date after processing
+![Image of data before](https://github.com/titee15017/CarND-Behavioral-Cloning-P3/blob/master/examples/1.png) distribution of data before processing
+![Image of date after](https://github.com/titee15017/CarND-Behavioral-Cloning-P3/blob/master/examples/2.png) distribution of date after processing
 
 ## Details About Files In This Directory
 
