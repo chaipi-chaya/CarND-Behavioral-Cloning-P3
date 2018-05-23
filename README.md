@@ -36,27 +36,34 @@ This file has 2 part.
 
 Here is architecture of the model:
 
-* Normalize (divide 255 and minus 5)
-* Crop, input shape (160, 320, 3), output shape (60, 320, 3)
-* Convolution layer 1, input shape (64, 320, 3), filtter shape (3, 3, 8), output shape (64, 320, 8)
-* MaxPooling, input shape (64, 320, 8), output shape (32, 160, 8)
-* Convolution layer 2, input shape (32, 160, 8), filtter shape (3, 3, 16), output shape (32, 160, 16)
-* MaxPooling, input shape (32, 160, 16), output shape (16, 80, 16)
-* Convolution layer 3, input shape (16, 80, 16), filtter shape (3, 3, 32), output shape (16, 80, 32)
-* Convolution layer 4, input shape (16, 80, 32), filtter shape (3, 3, 32), output shape (16, 80, 32)
-* MaxPooling, input shape (16, 80, 32), output shape (8, 40, 32)
-* Convolution layer 5, input shape (8, 40, 32), filtter shape (3, 3, 64), output shape (8, 40, 64)
-* Convolution layer 6, input shape (8, 40, 64), filtter shape (3, 3, 64), output shape (8, 40, 64)
-* MaxPooling, input shape (8, 40, 64), output shape (4, 20, 64)
-* Convolution layer 7, input shape (4, 20, 64), filtter shape (3, 3, 64), output shape (4, 20, 64)
-* Convolution layer 8, input shape (4, 20, 64), filtter shape (3, 3, 64), output shape (4, 20, 64)
-* MaxPooling, input shape (4, 20, 64), output shape (2, 10, 64)
-* Flatten, input shape (2, 10, 64), output shape (1280)
-* Fully connected layer 9, input shape (1280), output shape (1280)
-* Dropout rate 50%
-* Fully connected layer 10, input shape (1280), output shape (640)
-* Dropout rate 50%
-* Fully connected layer 11, input shape (640), output shape (1)
+Layer (type)                | Output Shape            | Param #   
+----------------------------|-------------------------|------------
+lambda_1 (Lambda)           | (None, 160, 320, 3)     |  0         
+cropping2d_1 (Cropping2D)   | (None, 64, 320, 3)      |  0         
+conv2d_1 (Conv2D)           | (None, 64, 320, 8)      |  224       
+max_pooling2d_1 (MaxPooling2| (None, 32, 160, 8)      |  0         
+conv2d_2 (Conv2D)           | (None, 32, 160, 16)     |  1168      
+max_pooling2d_2 (MaxPooling2| (None, 16, 80, 16)      |  0         
+conv2d_3 (Conv2D)           | (None, 16, 80, 32)      |  4640      
+conv2d_4 (Conv2D)           | (None, 16, 80, 32)      |  9248      
+max_pooling2d_3 (MaxPooling2| (None, 8, 40, 32)       |  0         
+conv2d_5 (Conv2D)           | (None, 8, 40, 64)       |  18496     
+conv2d_6 (Conv2D)           | (None, 8, 40, 64)       |  36928     
+max_pooling2d_4 (MaxPooling2| (None, 4, 20, 64)       |  0         
+conv2d_7 (Conv2D)           | (None, 4, 20, 64)       |  36928     
+conv2d_8 (Conv2D)           | (None, 4, 20, 64)       |  36928     
+max_pooling2d_5 (MaxPooling2| (None, 2, 10, 64)       |  0         
+flatten_1 (Flatten)         | (None, 1280)            |  0         
+dense_1 (Dense)             | (None, 1280)            |  1639680   
+dropout_1 (Dropout)         | (None, 1280)            |  0         
+dense_2 (Dense)             | (None, 640)             |  819840    
+dropout_2 (Dropout)         | (None, 640)             |  0         
+dense_3 (Dense)             | (None, 1)               |  641       
+----------------------------|-------------------------|------------
+Total params: 2,604,721
+Trainable params: 2,604,721
+Non-trainable params: 0
+-------------------------------------------------------------------
 
 ### `drive.py`
 
