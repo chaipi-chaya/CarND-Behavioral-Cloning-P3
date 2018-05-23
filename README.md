@@ -4,29 +4,31 @@
 
 ### model
 
-I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section. I trained model from data of center lane and recovering data but I got problem when the car hit on off road trail, so I added more data of preventing off road trail.<br/>
+I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section.
+
+### data generation
+
+I collected data from center lane and recovering from side road. I trained model from data of center lane and recovering data but I got problem when the car hit on off road trail, so I added more data of preventing off road trail.<br/>
+"center lane image"<br/>
+![center lane image](/examples/data.jpg?raw=true "center lane image")<br/>
 "prevent off road trail image"<br/>
 ![prevent off road trail image](/examples/off_road.jpg?raw=true "prevent off road trail image")<br/>
 "recovering image"<br/>
 ![recovering image](/examples/recovering.jpg?raw=true "recovering image")<br/>
 
-### data generation
-
-I collected data from center lane, recovering from side road and prevent goning on off road.
-
 ### data processing
 
-For data processing, I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data.<br/>
-"data before process"<br/>
-![data before process](/examples/1.jpg?raw=true "data before process")<br/>
-"data after process"<br/>
-![data after process](/examples/2.jpg?raw=true "data after process")<br/>
-
-Moreover, I also flipped and cropped images.<br/>
+For data processing, I flipped and cropped images, and this made huge amount of data.<br/>
 "flipped image, left to right"<br/>
 ![flipped image](/examples/off_road_flipped.jpg?raw=true "flipped image")<br/>
 "cropped image, from 160x320 to 64x320"<br/>
 ![cropped image](/examples/recovering_cropped.jpg?raw=true "cropped image")<br/>
+
+So I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data. This reduced amount of data<br/>
+"data before process"<br/>
+![data before process](/examples/1.jpg?raw=true "data before process")<br/>
+"data after process"<br/>
+![data after process](/examples/2.jpg?raw=true "data after process")<br/>
 
 ## Details About Files In This Directory
 
@@ -35,10 +37,10 @@ Moreover, I also flipped and cropped images.<br/>
 This file has 2 part.
 
 1. preprocess data, line 9-103
-* data of center lane, prevent off road : remove 90% of 0 angle, so it take short time to train and model will not be train on a lot of 0 angle.
+* data of center lane, prevent off road : remove 90% of 0 angle, so it takes short time to train and model will not be train on a lot of 0 angle.
 * recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
 
-2. model line 114-182 : This model initialize by VGG net 11, but I decrease filter size down to 8-64. All activation function is relu.
+2. model line 114-182 : This model initialized by VGG net 11, but I decreased filters size down to 8-64. All activation function is relu.
 
 Here is architecture of the model:
 
