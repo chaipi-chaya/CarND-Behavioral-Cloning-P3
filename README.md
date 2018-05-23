@@ -5,7 +5,9 @@
 ### model
 
 I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section. I trained model from data of center lane and recovering data but I got problem when the car hit on off road trail, so I added more data of preventing off road trail.
+"prevent off road trail image"
 ![prevent off road trail image](/examples/off_road.jpg?raw=true "prevent off road trail image")
+"recovering image"
 ![recovering image](/examples/recovering.jpg?raw=true "recovering image")
 
 ### data generation
@@ -15,7 +17,9 @@ I collected data from center lane, recovering from side road and prevent goning 
 ### data processing
 
 For data processing, I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data
+"data before process"
 ![data before process](/examples/1.jpg?raw=true "data before process")
+"data after process"
 ![data after process](/examples/2.jpg?raw=true "data after process")
 
 ## Details About Files In This Directory
