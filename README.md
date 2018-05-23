@@ -16,7 +16,7 @@ I collected data from center lane and recovering from side road. I trained model
 "recovering image"<br/>
 ![recovering image](/examples/recovering.jpg?raw=true "recovering image")<br/>
 
-Moreover, I used all 3 cameras in car.
+Moreover, I used all 3 cameras in car.<br/>
 "left camera image"<br/>
 ![left camera image](/examples/left.jpg?raw=true "left camera image")<br/>
 "center camera image"<br/>
@@ -32,7 +32,7 @@ For data processing, I flipped and cropped images, and this made huge amount of 
 "cropped image, from 160x320 to 64x320"<br/>
 ![cropped image](/examples/recovering_cropped.jpg?raw=true "cropped image")<br/>
 
-So I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data. This reduced amount of data<br/>
+So I removed 90% of 0 angle so model will not overtrain on 0 angle. And for recovering data, I removed angle between 1 to -1 because this range of angle is going straight angle and it will influence other data. This reduced amount of data.<br/>
 "data before process"<br/>
 ![data before process](/examples/1.jpg?raw=true "data before process")<br/>
 "data after process"<br/>
@@ -48,7 +48,7 @@ This file has 2 part.
 * data of center lane, prevent off road : remove 90% of 0 angle, so it takes short time to train and model will not be train on a lot of 0 angle.
 * recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
 
-2. model line 114-182 : This model initialized by VGG net 11, but I decreased filters size down to 8-64. All activation function is relu, all conv2D use same padding and all max pooling use valid padding.
+2. model line 114-182 : This model initialized by VGG net 11, but I decreased filters size down to 8-64. All activation function are relu, all conv2D use same padding and all max pooling use valid padding.
 
 Here is architecture of the model:
 
