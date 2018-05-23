@@ -10,15 +10,23 @@ I used VGG net 11 layers, but it too large for this problem, so I reduced filter
 
 I collected data from center lane and recovering from side road. I trained model from data of center lane and recovering data but I got problem when the car hit on off road trail, so I added more data of preventing off road trail.<br/>
 "center lane image"<br/>
-![center lane image](/examples/data.jpg?raw=true "center lane image")<br/>
+![center lane image](/examples/center.jpg?raw=true "center lane image")<br/>
 "prevent off road trail image"<br/>
 ![prevent off road trail image](/examples/off_road.jpg?raw=true "prevent off road trail image")<br/>
 "recovering image"<br/>
 ![recovering image](/examples/recovering.jpg?raw=true "recovering image")<br/>
 
+Moreover, I used all 3 cameras in car.
+"left camera image"<br/>
+![left camera image](/examples/left.jpg?raw=true "left camera image")<br/>
+"center camera image"<br/>
+![center camera image](/examples/center.jpg?raw=true "center camera image")<br/>
+"right camera image"<br/>
+![right camera image](/examples/right.jpg?raw=true "right camera image")<br/>
+
 ### data processing
 
-For data processing, I flipped and cropped images, and this made huge amount of data.<br/>
+For data processing, I flipped and cropped images, and this made huge amount of data and prevent overfitting in model.<br/>
 "flipped image, left to right"<br/>
 ![flipped image](/examples/off_road_flipped.jpg?raw=true "flipped image")<br/>
 "cropped image, from 160x320 to 64x320"<br/>
