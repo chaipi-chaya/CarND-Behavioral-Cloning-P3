@@ -59,11 +59,11 @@ dropout_1 (Dropout)         | (None, 1280)            |  0
 dense_2 (Dense)             | (None, 640)             |  819840    
 dropout_2 (Dropout)         | (None, 640)             |  0         
 dense_3 (Dense)             | (None, 1)               |  641       
-----------------------------|-------------------------|------------
+
 Total params: 2,604,721
 Trainable params: 2,604,721
 Non-trainable params: 0
--------------------------------------------------------------------
+
 
 ### `drive.py`
 
