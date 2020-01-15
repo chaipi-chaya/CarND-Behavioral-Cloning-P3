@@ -4,7 +4,7 @@
 
 ### model
 
-I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. for detail of model architecture please see in the next section.
+I used VGG net 11 layers, but it too large for this problem, so I reduced filter size. For detail of model architecture, please see in the next section.
 
 ### data generation
 
@@ -42,13 +42,13 @@ So I removed 90% of 0 angle so model will not overtrain on 0 angle. And for reco
 
 ### `model.py`
 
-This file has 2 part.
+This file has two parts.
 
 1. preprocess data, line 9-103
-* data of center lane, prevent off road : remove 90% of 0 angle, so it takes short time to train and model will not be train on a lot of 0 angle.
-* recovering data : remove angle between 1 to -1, so this data will not influence other data (use only turning data).
+* data of center lane, prevent off-road: remove 90% of 0 angles, so it takes a short time to train, and model will not be trained on a lot of 0 angles.
+* recovering data: remove angle between 1 to -1, so this data will not influence other data (use only turning data).
 
-2. model line 114-182 : This model initialized by VGG net 11, but I decreased filters size down to 8-64. All activation function are relu, all conv2D use same padding and all max pooling use valid padding.
+2. model lines 114-182: This model initialized by VGG net 11, but I decreased filter size down to 8-64. All activation functions are relu, all conv2D use the same padding, and all max pooling use valid padding.
 
 Here is architecture of the model:
 
@@ -96,7 +96,7 @@ python drive.py model.h5
 
 The above command will load the trained model and use the model to make predictions on individual images in real-time and send the predicted angle back to the server via a websocket connection.
 
-Note: There is known local system's setting issue with replacing "," with "." when using drive.py. When this happens it can make predicted steering values clipped to max/min values. If this occurs, a known fix for this is to add "export LANG=en_US.utf8" to the bashrc file.
+Note: There is a known local system's setting issue with replacing "," with "." when using drive.py. When this happens, it can make predicted steering values clipped to max/min values. If this occurs, a known fix for this is to add "export LANG=en_US.utf8" to the bashrc file.
 
 #### Saving a video of the autonomous agent
 
